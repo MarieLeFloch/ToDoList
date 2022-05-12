@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Evite que navigateurs mobiles affichent de leur propre manière avec le zoom -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- On inclus Bootstrap CSS et JS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <!-- On inclus Bootstrap pour les icones-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <!-- On inclus notre fichier css ensuite pour que nos modifs écrasent les propriétés bootstrap-->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- On inclus nos fichiers JS
+        defer : revient au même que le mettre en bas, pour l'inclure une fois le chargement ok -->
+    <script defer src="assets/js/components/task.js"></script>        
+    <script defer src="assets/js/components/tasksList.js"></script>
+    <script defer src="assets/js/app.js"></script>
+
+    <title>todolist</title>
+</head>
+<body>
+
+    <div class="container-fluid"> <!-- container-fluid : 100% de la largeur -->
+        <!--<div class="container">--> <!-- container : 100% de la largeur du break point le plus proche - par pallier - prend 12 colonnes -->
+        <!-- Content here -->
+
+    <header>
+    <!-- ------------------ Barre de navigation - modèle navbar ------------------ -->
+
+    <!-- ce qui se trouve à l'intérieur de .navbar (enfants directs) est soumis à flex qui utilise justify-content, je sors donc la div .collapase qui contient les éléments que je veux mettre à droite-->
+        <nav class="navbar navbar-expand-lg navbar-light mt-3">
+
+            <div class="container-fluid">
+
+            <h1 class="logo__title"><i class="bi bi-pencil"></i>TodoList</h1> <!-- font-weight-bold censé nous mettre le texte en gras... ne marche pas-->
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            </div>
+
+            <div class="collapse navbar-collapse filters" id="navbarNavDropdown">
+
+                <ul class="navbar-nav">
+
+                <li class="nav-item item-group-btn">
+                    <div class="btn-group mt-1 filters__task--completion" role="group" aria-label="Basic outlined example">
+                        <button type="button" class="btn btn-outline-info">Toutes</button>
+                        <button type="button" class="btn btn-outline-info">Terminées</button>
+                        <button type="button" class="btn btn-outline-info">En cours</button>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown filters__task--category">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Toutes les catégories
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li><a class="dropdown-item" href="#">Courses</a></li>
+                    <li><a class="dropdown-item" href="#">Formation</a></li>
+                    <li><a class="dropdown-item" href="#">Recherche de stage</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item nav__link filters__task--archived">
+                    <button type="button" class="btn btn-link">Voir les archives</button>
+                </li>
+
+                </ul>
+                
+            </div>
+
+        </nav>
+
+    </header>
+
+      <!-- ------------------ Champ d'ajout d'une tâche ----------------- -->
+
+      <!-- Mix modèle input group-->
+      <!-- mb et mt : margin bottom et top || pour padding : p || juste m ou p pour tous les côtés ?-->
+      <!-- En ajoutant dans la classe : justify-content-center, j'ai toute ma input-group qui se met au centre QUAND <768, pourquoi?-->
+
+      <form class="input-group mb-4 mt-5 justify-content-center task--add">
+
+        <div class="col-lg-8 mb-1 task__title">
+            <p class="task__title-label"></p>
+            <input class="task__title-field input" type="text" placeholder="Tâche à effectuer" name="title" />
+        </div>
+
+        <div class="col-lg-3">
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Choisir une catégorie</option>
+                <option value="1">Courses</option>
+                <option value="2">Formation</option>
+                <option value="3">Recherche de stage</option>
+            </select>
+        </div>
+
+        <div class="col-lg-1">
+            <button type="submit" class="btn btn-info">Ajouter</button>
+        </div>
+
+      </form>
+
+      <!-- -------------------------- Tâches------------------------------- -->
+
+      <!-- Mix modèle Card, Progress-->
+      <!-- J'ai ajouté dans la div après card-body : row g-3 align-items-center, permet d'avoir mes éléments en flex sur une même ligne-->
+      <!-- avec md => quand on passe sous la barre des 768px de largeur, les éléments se mettent les uns sous les autres. C'est déjà trop petit, je change pour lg : large -->
+
+      <div class = "tasks">
+      <!-- ***** TACHE 1-->
+      <div class="card mb-3 task task--todo">
+        <div class="card-body row g-3"> <!-- row: met tout sur une ligne / g3 : ajoute de l'espace entre les éléments / align-items-center ne sert à rien ici, je l'enlève -->
+            <!-- <div class="col-lg-7"> -->
+                <input class = "col-lg-8 task-input" type = "text" value = "Acheter du pain">
+            <!-- </div> -->
+            <div class="col-lg-2">
+                <span class="task-categ align-text-bottom">Formation</span> <!-- comment déplacer ce truc pour qu'il soit plus bas ?-->
+            </div >
+            <div class="col-lg-2">
+                <button type="button" class="btn btn-info"><i class="bi bi-check2-square"></i></button>
+                <button type="button" class="btn btn-info"><i class="bi bi-pencil-square"></i></button>
+                <button type="button" class="btn btn-info"><i class="bi bi-archive-fill"></i></button>
+            </div>
+        </div>
+        <!-- J'adapte l'épaisseur de ma barre de progression dans style height : -->
+        <!-- Je change de couleur dans la classe après progress-bar, exemple bg_info pour bleu turquoise -->
+        <div class="progress" style="height: 3px;">
+            <div class="progress-bar bg-info" role="progressbar" style="width: 1%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+      </div>
+   
+
+      <!-- ***** TACHE 2-->
+      <div class="card mb-3 task task--todo">
+        <div class="card-body row g-3">
+                <input class = "col-lg-8 task-input" type = "text" value = "Réviser les objets en PHP">
+            <div class="col-lg-2">
+                <span class="task-categ align-text-bottom">Formation</span> 
+            </div >
+            <div class="col-lg-2">
+                <button type="button" class="btn btn-info"><i class="bi bi-check2-square"></i></button>
+                <button type="button" class="btn btn-info"><i class="bi bi-pencil-square"></i></button>
+                <button type="button" class="btn btn-info"><i class="bi bi-archive-fill"></i></button>
+            </div>
+        </div>
+        <div class="progress" style="height: 3px;">
+            <div class="progress-bar bg-info" role="progressbar" style="width: 80%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+      </div>
+
+
+        <!-- ***** TACHE 3-->
+        <div class="card mb-3 task task--complete">
+          <div class="card-body row g-3 ">
+        
+                  <input class = "col-lg-8 task-input task-done" type = "text" value = "Réviser les évènements en JS">
+        
+              <div class="col-lg-2">
+                  <span class="task-categ align-text-bottom">Formation</span> 
+              </div >
+              <div class="col-lg-2">
+                <button type="button" class="btn btn-info"><i class="bi bi-caret-left-square-fill"></i></button>
+                  <button type="button" class="btn btn-info"><i class="bi bi-pencil-square"></i></button>
+                  <button type="button" class="btn btn-info"><i class="bi bi-archive-fill"></i></button>
+              </div>
+          </div>
+        
+          <div class="progress" style="height: 3px;">
+              <div class="progress-bar bg-info" role="progressbar" style="width: 100%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+        </div>
+
+        <!-- ***** TACHE 4-->
+        <div class="card mb-3 task task--edit">
+            <div class="card-body row g-3 ">
+          
+                    <input class = "col-lg-8 task-input task-edited" type = "text" value = "Apprendre à apprend">
+          
+                <div class="col-lg-2">
+                    <span class="task-categ align-text-bottom"></span> 
+                </div >
+                <div class="col-lg-2">
+                    <button type="button" class="btn btn-info"><i class="bi bi-check2-square"></i></button>
+                    <button type="button" class="btn btn-info"><i class="bi bi-pencil-square"></i></button>
+                    <button type="button" class="btn btn-info"><i class="bi bi-archive-fill"></i></button>
+                </div>
+            </div>
+          
+            <div class="progress" style="height: 3px;">
+                <div class="progress-bar bg-info" role="progressbar" style="width: 30%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+          </div>
+      
+        <!-- ***** TACHE 5-->
+        <div class="card mb-3 task task--archive">
+            <div class="card-body row g-3 ">
+          
+                    <input class = "col-lg-8 task-input task-archived" type = "text" value = "Exemple de tâche archivée">
+          
+                <div class="col-lg-2">
+                    <span class="task-categ align-text-bottom"></span> 
+                </div >
+                <div class="col-lg-2">
+                    <button type="button" class="btn btn-info"><i class="bi bi-arrow-counterclockwise"></i></button>
+                    <button type="button" class="btn btn-info"><i class="bi bi-trash-fill"></i></button>
+                </div>
+            </div>
+          
+            <div class="progress" style="height: 3px;">
+                <div class="progress-bar bg-secondary" role="progressbar" style="width: 80%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+        </div>
+      
+    </div>
+    </div>
+</body>
+</html>
+

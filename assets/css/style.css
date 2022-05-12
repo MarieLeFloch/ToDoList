@@ -1,0 +1,85 @@
+/*J'élargis le container du lien car sinon je ne sais pas pourquoi il passe à la ligne */
+.nav__link{
+    width:10em;
+}
+
+.btn-outline-info{
+    font-size: 0.9em;
+}
+
+h1{
+    font-size: 2.5m;
+    font-weight: bold;
+}
+
+.btn-info{
+    color:white;
+}
+
+/*--- NAV */
+/* On ajoute une marge à côte de nos boutons*/
+.navbar-collapse{
+    padding-left:0.8em;
+}
+
+.navbar{
+    padding: 2em;
+    background-color: rgb(235, 235, 235);
+    color: rgb(0, 0, 0);
+}
+
+.bi-pencil{
+    color:rgb(0, 0, 0) !important;
+    padding-right: 0.2em;
+    font-size: 0.9em;
+}
+
+
+/*--- ADD TASK */
+
+.task--add{
+    padding: 1em;
+    border: 2px solid #0dcaf0;
+}
+
+.task--archive {
+    background-color: rgb(233, 233, 233);
+}
+
+/*--- TASKS */
+
+/* On enleve la bordure aux champs des tâches */
+.task-input{
+    border:none;
+}
+
+.task-categ{
+    color: grey;
+    display: inline-block;
+}
+
+.task-done{
+    text-decoration: line-through;
+}
+
+.task-archived {
+    background-color: rgb(233, 233, 233);
+    color: rgb(65, 65, 65);
+}
+
+/* Retirer l'encadré orange automatique des input à l'édition*/
+input:focus {
+    border:none; /* ne marche pas */
+    /*outline:none; /* fonctionne mais casse mon affichage */
+}
+
+/* Ajout d'un encadré violet à l'édition */
+.task-edited:focus{
+    border: 5px solid purple; 
+}
+
+/*Les icones de bootstrap*/
+.bi{
+    color:white;
+}
+
