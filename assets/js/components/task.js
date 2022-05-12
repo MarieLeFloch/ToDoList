@@ -59,12 +59,11 @@ const task = {
         // On cible l'élément parent
         const taskElement = taskTitleInputElement.closest('.task');
 
-        // We get the task title and update its content with our input value
+        // On modifie le contenu avec le nouveau titre
         taskElement.querySelector('.task__title-label').textContent = newTaskTitle;
 
-        // We add task--edit to the parent to disable edition
+        // On retire la classe task--edit
         taskElement.classList.remove('task--edit');
-
     }
 
 }
