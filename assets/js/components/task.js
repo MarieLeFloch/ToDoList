@@ -4,25 +4,24 @@ const task = {
     // Ajout des event listeners sur une tâche donnée
     handleTaskEvents: function(taskElement) {
         // Ajout d'un event listener quand on clique sur le titre de la tâche (classe .title__label)
-        //! mettre cette même classe, même configuration pour chaque input de chaque tâche!
-        const taskTitleElement = taskElement.querySelector('task__title-label');
-        
+        const taskTitleElement = taskElement.querySelector('.task__title-label');
+        //console.log(taskTitleElement)
         taskTitleElement.addEventListener('click', task.letEditingTaskTitle);
 
-        // Permet d'activer à l'événement une fonction anonyme affichant clik, pour checker
+        // //Permet d'activer à l'événement une fonction anonyme affichant clik, pour checker
         // taskTitleElement.addEventListener('click', function() {
-        //     console.log('CLIK');
+        //     //console.log('CLIK');
         // })
 
         // Selection de l'input contenant le titre
-        //! vérifier si classe bien existante
         const taskTitleInputElement = taskElement.querySelector('.task__title-field');
+        // console.log(taskTitleInputElement);
 
         // On va considérer deux manières de valider un nouveau titre : 
         // perte du focus sur l'input
-        taskTitleInputElement.addEventListener('blur', );
+        taskTitleInputElement.addEventListener('blur', task.stopEditingWithEndFocus);
         // appui sur la touche enter
-        taskTitleInputElement.addEventListener('keydown', );
+        //taskTitleInputElement.addEventListener('keydown', );
 
     },
 
@@ -40,10 +39,9 @@ const task = {
     },
 
     // Méthode gérant la validation du nouveau titre via ENTER
-    //? DEMAIN
-    stopEditingWithKeydown: function() {
+    //stopEditingWithKeydown: function() {
 
-    },
+    //},
 
     // Méthode gérant la validation du nouveau titre via SORTIE INPUT
     stopEditingWithEndFocus: function(event) {
@@ -65,5 +63,6 @@ const task = {
         // On retire la classe task--edit
         taskElement.classList.remove('task--edit');
     }
+
 
 }

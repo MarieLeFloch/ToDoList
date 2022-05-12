@@ -113,20 +113,30 @@
       <!-- avec md => quand on passe sous la barre des 768px de largeur, les éléments se mettent les uns sous les autres. C'est déjà trop petit, je change pour lg : large -->
 
       <div class = "tasks">
+
       <!-- ***** TACHE 1-->
       <div class="card mb-3 task task--todo">
-        <div class="card-body row g-3"> <!-- row: met tout sur une ligne / g3 : ajoute de l'espace entre les éléments / align-items-center ne sert à rien ici, je l'enlève -->
-            <!-- <div class="col-lg-7"> -->
-                <input class = "col-lg-8 task-input" type = "text" value = "Acheter du pain">
-            <!-- </div> -->
-            <div class="col-lg-2">
-                <span class="task-categ align-text-bottom">Formation</span> <!-- comment déplacer ce truc pour qu'il soit plus bas ?-->
+        
+        <div class="card-body row g-3 task__content"> <!-- row: met tout sur une ligne / g3 : ajoute de l'espace entre les éléments -->
+
+            <div class="col-lg-8 task__title">
+                <p class="task__title-label">Acheter du pain</p> 
+                <input class="task__title-field input" type="text" value="Acheter du pain" placeholder="Titre de la tâche" name="title" />
+            </div> 
+           
+            <div class="col-lg-2 task__category">
+                <p class="task__categ-name">Courses</p>
             </div >
-            <div class="col-lg-2">
-                <button type="button" class="btn btn-info"><i class="bi bi-check2-square"></i></button>
-                <button type="button" class="btn btn-info"><i class="bi bi-pencil-square"></i></button>
-                <button type="button" class="btn btn-info"><i class="bi bi-archive-fill"></i></button>
+        <!-- On va mettre tous les boutons pour chaque tâche et gérer l'affichage selon le statut dans le css-->
+            <div class="col-lg-2 task__buttons">
+                <button type="button" class="btn btn-info task__button task__button--incomplete"><i class="bi bi-caret-left-square-fill"></i></button>
+                <button type="button" class="btn btn-info task__button task__button--desarchive"><i class="bi bi-arrow-counterclockwise"></i></button>
+                <button type="button" class="btn btn-info task__button task__button--validate"><i class="bi bi-check2-square"></i></button>
+                <button type="button" class="btn btn-info task__button task__button--modify"><i class="bi bi-pencil-square"></i></button>
+                <button type="button" class="btn btn-info task__button task__button--archive"><i class="bi bi-archive-fill"></i></button>
+                <button type="button" class="btn btn-info task__button task__button--delete"><i class="bi bi-trash-fill"></i></button>
             </div>
+
         </div>
         <!-- J'adapte l'épaisseur de ma barre de progression dans style height : -->
         <!-- Je change de couleur dans la classe après progress-bar, exemple bg_info pour bleu turquoise -->
@@ -138,39 +148,48 @@
 
       <!-- ***** TACHE 2-->
       <div class="card mb-3 task task--todo">
-        <div class="card-body row g-3">
-                <input class = "col-lg-8 task-input" type = "text" value = "Réviser les objets en PHP">
-            <div class="col-lg-2">
-                <span class="task-categ align-text-bottom">Formation</span> 
+        <div class="card-body row g-3 task__content"> 
+            <div class="col-lg-8 task__title">
+                <p class="task__title-label">Réviser PHP</p> 
+                <input class="task__title-field input" type="text" value="Réviser PHP" placeholder="Titre de la tâche" name="title" />
+            </div> 
+            <div class="col-lg-2 task__category">
+                <p class="task__categ-name">Formation</p>
             </div >
-            <div class="col-lg-2">
-                <button type="button" class="btn btn-info"><i class="bi bi-check2-square"></i></button>
-                <button type="button" class="btn btn-info"><i class="bi bi-pencil-square"></i></button>
-                <button type="button" class="btn btn-info"><i class="bi bi-archive-fill"></i></button>
+            <div class="col-lg-2 task__buttons">
+                <button type="button" class="btn btn-info task__button task__button--incomplete"><i class="bi bi-caret-left-square-fill"></i></button>
+                <button type="button" class="btn btn-info task__button task__button--desarchive"><i class="bi bi-arrow-counterclockwise"></i></button>
+                <button type="button" class="btn btn-info task__button task__button--validate"><i class="bi bi-check2-square"></i></button>
+                <button type="button" class="btn btn-info task__button task__button--modify"><i class="bi bi-pencil-square"></i></button>
+                <button type="button" class="btn btn-info task__button task__button--archive"><i class="bi bi-archive-fill"></i></button>
+                <button type="button" class="btn btn-info task__button task__button--delete"><i class="bi bi-trash-fill"></i></button>
             </div>
         </div>
         <div class="progress" style="height: 3px;">
-            <div class="progress-bar bg-info" role="progressbar" style="width: 80%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            <div class="progress-bar bg-info" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
       </div>
 
 
         <!-- ***** TACHE 3-->
         <div class="card mb-3 task task--complete">
-          <div class="card-body row g-3 ">
-        
-                  <input class = "col-lg-8 task-input task-done" type = "text" value = "Réviser les évènements en JS">
-        
-              <div class="col-lg-2">
-                  <span class="task-categ align-text-bottom">Formation</span> 
-              </div >
-              <div class="col-lg-2">
-                <button type="button" class="btn btn-info"><i class="bi bi-caret-left-square-fill"></i></button>
-                  <button type="button" class="btn btn-info"><i class="bi bi-pencil-square"></i></button>
-                  <button type="button" class="btn btn-info"><i class="bi bi-archive-fill"></i></button>
-              </div>
-          </div>
-        
+            <div class="card-body row g-3 task__content"> 
+                <div class="col-lg-8 task__title">
+                    <p class="task__title-label">Réviser JavaScript</p> 
+                    <input class="task__title-field input" type="text" value="Réviser JavaScript" placeholder="Titre de la tâche" name="title" />
+                </div> 
+                <div class="col-lg-2 task__category">
+                    <p class="task__categ-name">Formation</p>
+                </div >
+                <div class="col-lg-2 task__buttons">
+                    <button type="button" class="btn btn-info task__button task__button--incomplete"><i class="bi bi-caret-left-square-fill"></i></button>
+                    <button type="button" class="btn btn-info task__button task__button--desarchive"><i class="bi bi-arrow-counterclockwise"></i></button>
+                    <button type="button" class="btn btn-info task__button task__button--validate"><i class="bi bi-check2-square"></i></button>
+                    <button type="button" class="btn btn-info task__button task__button--modify"><i class="bi bi-pencil-square"></i></button>
+                    <button type="button" class="btn btn-info task__button task__button--archive"><i class="bi bi-archive-fill"></i></button>
+                    <button type="button" class="btn btn-info task__button task__button--delete"><i class="bi bi-trash-fill"></i></button>
+                </div>
+            
           <div class="progress" style="height: 3px;">
               <div class="progress-bar bg-info" role="progressbar" style="width: 100%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
@@ -178,19 +197,22 @@
 
         <!-- ***** TACHE 4-->
         <div class="card mb-3 task task--edit">
-            <div class="card-body row g-3 ">
-          
-                    <input class = "col-lg-8 task-input task-edited" type = "text" value = "Apprendre à apprend">
-          
-                <div class="col-lg-2">
-                    <span class="task-categ align-text-bottom"></span> 
+            <div class="card-body row g-3 task__content"> 
+                <div class="col-lg-8 task__title">
+                    <p class="task__title-label">Apprendre à </p> 
+                    <input class="task__title-field input" type="text" value="Apprendre à" placeholder="Titre de la tâche" name="title" />
+                </div> 
+                <div class="col-lg-2 task__category">
+                    <p class="task__categ-name">Formation</p>
                 </div >
-                <div class="col-lg-2">
-                    <button type="button" class="btn btn-info"><i class="bi bi-check2-square"></i></button>
-                    <button type="button" class="btn btn-info"><i class="bi bi-pencil-square"></i></button>
-                    <button type="button" class="btn btn-info"><i class="bi bi-archive-fill"></i></button>
+                <div class="col-lg-2 task__buttons">
+                    <button type="button" class="btn btn-info task__button task__button--incomplete"><i class="bi bi-caret-left-square-fill"></i></button>
+                    <button type="button" class="btn btn-info task__button task__button--desarchive"><i class="bi bi-arrow-counterclockwise"></i></button>
+                    <button type="button" class="btn btn-info task__button task__button--validate"><i class="bi bi-check2-square"></i></button>
+                    <button type="button" class="btn btn-info task__button task__button--modify"><i class="bi bi-pencil-square"></i></button>
+                    <button type="button" class="btn btn-info task__button task__button--archive"><i class="bi bi-archive-fill"></i></button>
+                    <button type="button" class="btn btn-info task__button task__button--delete"><i class="bi bi-trash-fill"></i></button>
                 </div>
-            </div>
           
             <div class="progress" style="height: 3px;">
                 <div class="progress-bar bg-info" role="progressbar" style="width: 30%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
@@ -199,18 +221,22 @@
       
         <!-- ***** TACHE 5-->
         <div class="card mb-3 task task--archive">
-            <div class="card-body row g-3 ">
-          
-                    <input class = "col-lg-8 task-input task-archived" type = "text" value = "Exemple de tâche archivée">
-          
-                <div class="col-lg-2">
-                    <span class="task-categ align-text-bottom"></span> 
+            <div class="card-body row g-3 task__content"> 
+                <div class="col-lg-8 task__title">
+                    <p class="task__title-label">Exemple de tâche archivée</p> 
+                    <input class="task__title-field input" type="text" value="Exemple de tâche archivée" placeholder="Titre de la tâche" name="title" />
+                </div> 
+                <div class="col-lg-2 task__category">
+                    <p class="task__categ-name"></p>
                 </div >
-                <div class="col-lg-2">
-                    <button type="button" class="btn btn-info"><i class="bi bi-arrow-counterclockwise"></i></button>
-                    <button type="button" class="btn btn-info"><i class="bi bi-trash-fill"></i></button>
+                <div class="col-lg-2 task__buttons">
+                    <button type="button" class="btn btn-info task__button task__button--incomplete"><i class="bi bi-caret-left-square-fill"></i></button>
+                    <button type="button" class="btn btn-info task__button task__button--desarchive"><i class="bi bi-arrow-counterclockwise"></i></button>
+                    <button type="button" class="btn btn-info task__button task__button--validate"><i class="bi bi-check2-square"></i></button>
+                    <button type="button" class="btn btn-info task__button task__button--modify"><i class="bi bi-pencil-square"></i></button>
+                    <button type="button" class="btn btn-info task__button task__button--archive"><i class="bi bi-archive-fill"></i></button>
+                    <button type="button" class="btn btn-info task__button task__button--delete"><i class="bi bi-trash-fill"></i></button>
                 </div>
-            </div>
           
             <div class="progress" style="height: 3px;">
                 <div class="progress-bar bg-secondary" role="progressbar" style="width: 80%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>

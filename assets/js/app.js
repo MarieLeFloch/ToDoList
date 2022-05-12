@@ -10,4 +10,4 @@ const app = {
 }
 
 // Lancement de init à la fin du chargement du DOM par le navigateur
-document.addEventListener('DOMContentLoaded', app.init())
+document.addEventListener('DOMContentLoaded', app.init)

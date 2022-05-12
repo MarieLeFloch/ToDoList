@@ -35,25 +35,94 @@ h1{
 }
 
 
-/*--- ADD TASK */
+/***--- ADD TASK */
 
 .task--add{
     padding: 1em;
     border: 2px solid #0dcaf0;
 }
 
+/* On masque le champ avec le titre sauf le champ d'ajout qui reste affiché */
+.task--add .task__title-field {
+    display: block;
+  }
+
+/***--- TASKS */
+
+/** Affichage boutons */
+/* On gère l'affichage des boutons en fonction du statut (via la classe)*/
+
+/** 1. Par défaut */
+/* Au commencement (.todo), on n'affiche pas ces boutons*/
+.task__button--desarchive,
+.task__button--incomplete,
+.task__button--delete {
+  display: none;
+}
+
+/** 2. Complete*/
+/* Si la tâche est finie (.complete), on masque le bouton validé*/
+.task--complete .task__button--validate {
+    display: none;
+  }
+/* Et on affiche le bouton retour */
+/*! le bouton incomplete s'affiche pour task--archive*/
+.task--complete .task__button--incomplete {
+  display: inline-block;
+}
+
+/** 3. Archive*/
+/* Si la tâche est archivée (.archive), on masque ces boutons */
+.task--archive .task__button--validate,
+.task--archive .task__button--modify,
+.task--archive .task__button--archive {
+  display: none;
+}
+/* Et on affiche le bouton retour et le bouton supprimer*/
+.task--archive .task__button--desarchive,
+.task--archive .task__button--delete {
+  display: inline-block;
+}
+
+/** 4. Edit*/
+/* Si la tâche est éditée (.edit), on n'affiche pas le nom de la tâche*/
+.task--edit .task__title-label {
+  display: none;
+}
+
+/** Champs de saisie input des titres */
+/* Par défaut, le champ est masqué */
+/* On enleve la bordure aux champs des tâches */
+.task__title-field{
+    border: 1px solid rgb(185, 185, 185);
+    display: none;
+}
+
+/** Gestion du titre à l'édition */
+/* Lorsqu'on passe à l'édition -> class task-edit ajoutée /
+/* On masque le champ avec le titre "enregistré", le <p> */
+.task--edit .task__title-label {
+    display: none;
+  }
+
+/* Et on affiche le champ <input> pour la saisie */
+.task--edit .task__title-field {
+    display: block;
+}
+
+/** Style affichage des tâches */
+/* Fond des tâches archivées*/
 .task--archive {
     background-color: rgb(233, 233, 233);
 }
 
-/*--- TASKS */
+/* Titres des tâches archivées*/
+.task--archive .task__title {
+    color: rgb(65, 65, 65);
+  }
+  
 
-/* On enleve la bordure aux champs des tâches */
-.task-input{
-    border:none;
-}
-
-.task-categ{
+.task__categ-name{
     color: grey;
     display: inline-block;
 }
@@ -62,10 +131,6 @@ h1{
     text-decoration: line-through;
 }
 
-.task-archived {
-    background-color: rgb(233, 233, 233);
-    color: rgb(65, 65, 65);
-}
 
 /* Retirer l'encadré orange automatique des input à l'édition*/
 input:focus {
