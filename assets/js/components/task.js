@@ -3,6 +3,8 @@
 const task = {
     // Ajout des event listeners sur une tâche donnée
     handleTaskEvents: function(taskElement) {
+
+        //* EDITION D'UNE TACHE
         // Ajout d'un event listener quand on clique sur le titre de la tâche (classe .title__label)
         const taskTitleElement = taskElement.querySelector('.task__title-label');
         //console.log(taskTitleElement)
@@ -12,6 +14,7 @@ const task = {
         // taskTitleElement.addEventListener('click', function() {
         //     //console.log('CLIK');
         // })
+
 
         // Selection de l'input contenant le titre
         const taskTitleInputElement = taskElement.querySelector('.task__title-field');
@@ -23,7 +26,18 @@ const task = {
         // appui sur la touche enter
         //taskTitleInputElement.addEventListener('keydown', );
 
+        //* COMPLETION D'UNE TACHE
+        // Séléction des boutons concernés dans nos éléments task
+        const completeTaskButton = taskElement.querySelector('.task__button--validate');
+        //console.log(completeTaskButton); //ok
+        // Lancement de la méthode pour marquer une tâche complète
+        completeTaskButton.addEventListener('click', task.handleCompleteTask);
+        
+
+
     },
+
+    //* EDITION D'UNE TACHE
 
     // Permettre la modification d'un titre lorsqu'on clique dessus
     // On va passer d'un <p> non modifiable à un <input>
@@ -48,7 +62,7 @@ const task = {
         //console.log('Fin edition'); // dès sortie de l'input, apparait, ok!
         // On fait le chemin inverse de ci-dessus : on supprime la classe task--edit
 
-        // On cible l'input ayant suvi l'événement
+        // On cible l'input ayant subi l'événement
         const taskTitleInputElement = event.currentTarget;
 
         // Stockage de la nouvelle valeur entrée dans l'input
@@ -62,6 +76,26 @@ const task = {
 
         // On retire la classe task--edit
         taskElement.classList.remove('task--edit');
+    },
+
+    //* COMPLETION D'UNE TACHE
+
+    handleCompleteTask: function(event) {
+        console.log('clic bouton complété'); // ok
+        
+        // On cible le bouton ayant subi l'événement
+        const taskCompleteButtonElement = event.currentTarget;
+
+        // On cible l'élément parent
+        const taskElement = taskCompleteButtonElement.closest('.task')
+
+        // On modifie la classe de ce parent pour qu'elle soit considérée complète
+        // Si elle passe en complète, c'est qu'elle étaient en todo
+        taskElement.classList.remove('task--todo');
+        taskElement.classList.add('task--complete');
+
+        
+
     }
 
 
