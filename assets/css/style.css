@@ -49,6 +49,11 @@ h1{
 
 /***--- TASKS */
 
+/* * Couleurs des boutons : on se base sur couleurs basiques bootstrap pour l'instant
+} */
+
+
+
 /** Affichage boutons */
 /* On gère l'affichage des boutons en fonction du statut (via la classe)*/
 
@@ -112,15 +117,15 @@ h1{
     display: block;
 }
 
-/** Style affichage des tâches */
+/** Style affichage spécifique selon les tâches */
 /* Fond des tâches archivées*/
 .task--archive {
-    background-color: rgb(233, 233, 233);
+    background-color:rgb(206, 206, 206);
 }
 
 /* Titres des tâches archivées*/
 .task--archive .task__title {
-    color: rgb(65, 65, 65);
+    color: rgb(127 127 127);
   }
   
 
@@ -129,8 +134,9 @@ h1{
     display: inline-block;
 }
 
-.task-done{
-    text-decoration: line-through;
+/* Titre tâche completée : rayé*/
+.task--complete .task__title-label {
+  text-decoration: line-through;
 }
 
 

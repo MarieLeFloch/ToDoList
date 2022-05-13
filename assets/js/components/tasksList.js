@@ -21,8 +21,18 @@ const tasksList = {
         tasksListArray.forEach(function(taskElement) {
             //console.log(taskElement); //ok
             task.handleTaskEvents(taskElement);
-        })
+        });
 
+    },
+
+    //* INSERTION DE LA NOUVELLE TACHE
+    insertNewTask: function(taskElement) {
+        const tasksListContainer = document.querySelector('.tasks');
+        // On l'ajoute en haut de la liste des tâches
+        tasksListContainer.prepend(taskElement);
+
+        // Et on relance la méthode pour poser les écouteurs sur notre nouvel élément !
+        task.handleTaskEvents(taskElement);
     }
 
 

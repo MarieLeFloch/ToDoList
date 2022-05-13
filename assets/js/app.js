@@ -6,6 +6,7 @@ const app = {
         //console.log('init app ok') //ok
         // On lance nos modules
         tasksList.init();
+        newTaskForm.init();
     }
 }
 
